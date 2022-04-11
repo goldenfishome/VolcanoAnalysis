@@ -16,7 +16,8 @@ All visualizations in this project here are created from either python Ploty or 
 
 ![original](/original.png)
 ![revise](/revise.jpg)
-![avatar](https://zehuiwu.georgetown.domains/ANLY503/Mid_point_Project/prototype_screenshoot.html)
+![avatar](https://zehuiwu.georgetown.domains/ANLY503/Mid_point_Project/20881649644116_.pic.jpg)
+![avatar](https://zehuiwu.georgetown.domains/ANLY503/Mid_point_Project/20861649643623_.pic_hd.jpg)
 
 Data Science Story and Visualization Description
 15th Jan 2022, Georgetown University student Lisa Chen was shocked by the news of a volcanic eruption that happened in Tonga. She was very worried about the situation there since one of her best friends Fangu Fukofuka is from Tonga. Lisa texted Fangu right after she saw the news in the morning. 6 hours passed, and Fangu still did not text back. And the whole world had trouble connecting with Tonga as well. Lisa desperately wanted to know how devastating the effect of the volcanic eruption could be, and how possible it can be related to other natural disasters, including earthquakes, tsunamis, etc.
