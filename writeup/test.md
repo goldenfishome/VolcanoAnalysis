@@ -2,18 +2,21 @@
 
 This project focused on the volcanoes
 
-Links of Data Resources: 
+## Links of Data Resources
+ 
 [Dataset1](https://www.kaggle.com/code/arditriana/volcano-eruption-data-visualization/data) 
 [Dataset2](https://volcano.si.edu/volcanolist_countries.cfm) 
 [Dataset3](https://www.kaggle.com/datasets/usgs/earthquake-database?modal=true) 
 [Dataset4](https://volcano.si.edu/volcanolist_holocene.cfm) 
 [Dataset5](https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions) 
 
- 
+## 
+
 All visualizations in this project here are created from either python Ploty or R Plotly library. All the plots here are interactive and support the function of panning, zooming, box selection, and showing additional information when hovering over the data point. 
 
 ![original](/original.png)
 ![revise](/revise.jpg)
+![avatar](https://zehuiwu.georgetown.domains/ANLY503/Mid_point_Project/prototype_screenshoot.html)
 
 Data Science Story and Visualization Description
 15th Jan 2022, Georgetown University student Lisa Chen was shocked by the news of a volcanic eruption that happened in Tonga. She was very worried about the situation there since one of her best friends Fangu Fukofuka is from Tonga. Lisa texted Fangu right after she saw the news in the morning. 6 hours passed, and Fangu still did not text back. And the whole world had trouble connecting with Tonga as well. Lisa desperately wanted to know how devastating the effect of the volcanic eruption could be, and how possible it can be related to other natural disasters, including earthquakes, tsunamis, etc.
