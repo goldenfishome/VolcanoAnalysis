@@ -41,28 +41,28 @@ rules <- apriori(
 )
 
 
-inspect(rules[1:15])
+inspect(rules[1:10])
 ## Sort by Sup
 SortedRules_sup <- sort(rules, by="support", decreasing=TRUE)
-inspect(SortedRules_sup[1:15])
+inspect(SortedRules_sup[1:10])
 
 ##  SOrt by Conf
 SortedRules_conf <- sort(rules, by="confidence", decreasing=TRUE)
-inspect(SortedRules_conf[1:15])
+inspect(SortedRules_conf[1:10])
 
 ## Sort by Lift
 SortedRules_lift <- sort(rules, by="lift", decreasing=TRUE)
-inspect(SortedRules_lift[1:15])
+inspect(SortedRules_lift[1:10])
 
 
 
 ##Plotly
-p1 <- plot(SortedRules_sup[1:15],method="graph",engine='htmlwidget', shading="confidence")
-htmlwidgets::saveWidget(as_widget(p1), "network-Sup_TOP15.html")
+p1 <- plot(SortedRules_sup[1:10],method="graph",engine='htmlwidget', shading="confidence")
+htmlwidgets::saveWidget(as_widget(p1), "network-Sup_TOP10.html")
 
-p2 <- plot(SortedRules_conf[1:15],method="graph",engine='htmlwidget',shading="confidence") 
-htmlwidgets::saveWidget(as_widget(p2), "network-conf_TOP15.html")
+p2 <- plot(SortedRules_conf[1:10],method="graph",engine='htmlwidget',shading="confidence") 
+htmlwidgets::saveWidget(as_widget(p2), "network-conf_TOP10.html")
 
-p3 <- plot(SortedRules_lift[1:15],method="graph",engine='htmlwidget',shading="confidence") 
-htmlwidgets::saveWidget(as_widget(p3), "network-Lift_TOP15.html")
+p3 <- plot(SortedRules_lift[1:10],method="graph",engine='htmlwidget',shading="confidence") 
+htmlwidgets::saveWidget(as_widget(p3), "network-Lift_TOP10.html")
 
