@@ -26,27 +26,36 @@ eruption$enddate <- as.Date(with(eruption,paste(end_year,
                                                   end_day,sep="-")),
                               "%Y-%m-%d")
 eruption$durations_days = as.numeric(eruption$enddate - eruption$startdate)
-
+write.csv(eruption,"erup.csv")
 
 ##1 area of activity
 eruptions <- eruption %>%
   dplyr::select(-c(4:12))
 
-aa <- eruptions %>%
-  group_by(area_of_activity, vei_status) %>%
+vol <- read.csv("archive/volcano.csv")
+aaa <- left_join(eruptions, vol, by="volcano_name") %>%
+  na.omit() %>%
+  dplyr::select(c(country, vei_status, durations_days))
+
+aa <- aaa %>%
+  group_by(country, vei_status) %>%
   summarise(durations_days = mean(durations_days)) %>%
   na.omit()
 
+library(forcats)
 p <- aa %>%
   filter(durations_days > 365 & durations_days < 730) %>%
-  ggplot(aes(area_of_activity, durations_days , size = durations_days, 
+  arrange(desc(durations_days)) %>% 
+  ggplot(aes(fct_reorder(country, durations_days), durations_days , size = durations_days, 
              color=vei_status)) +
   geom_point() +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90)) +
+  theme(axis.text.x = element_text(angle = 60)) +
   ggtitle("The Area of Activity Where Volcanic Eruptions Last Between 1-2 Years") +
-  xlab("Area of Activity") +
-  ylab("Duration Days")
+  xlab("Country") +
+  ylab("Duration Days") +
+  labs(color = "Measurement of the Relative Explosivity") +
+  labs(size='Durations Days') 
   
 
 ggplotly(p)
@@ -57,10 +66,25 @@ ggplotly(p)
 library(ggiraph)
 library(colormap)
  
-ll <- eruption %>%
-  ggplot(aes(x = longitude, y = latitude, colour = vei_status, 
-             size = vei^5)) +
-  geom_point(shape = "circle", alpha = 0.4) +
+world <- map_data("world") %>% 
+  rename(longitude = long) %>% 
+  rename(latitude = lat) %>% 
+  mutate_if(is.numeric, round, 3)
+
+map2 <- eruption %>% left_join(world, by = c("longitude", "latitude"))
+
+ll <- 
+  ggplot() +
+  geom_map(
+    data = world, map = world,
+    aes(longitude, latitude, map_id = region),
+    color = "white", fill = "gray20", size = 0.01, alpha = 0.1
+  ) +
+  geom_point(eruption, 
+             mapping = aes(longitude, latitude, 
+                 size = vei^5,  color=vei_status),
+             alpha = 0.4,
+  ) +
   theme_bw() +
   scale_fill_gradient() +
   scale_color_hue(direction = 1) + 
@@ -69,6 +93,9 @@ ll <- eruption %>%
   ylab("Latitude")
 
 ggplotly(ll)
+
+library(esquisse)
+esquisser()
 
 ##3 evidence_category
 ec <- erup %>%
